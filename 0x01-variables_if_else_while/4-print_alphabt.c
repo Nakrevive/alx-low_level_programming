@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 /**
  * main - entry point
  * Description 'print alphabets except q and e'
@@ -6,19 +9,16 @@
  */
 int main(void)
 {
-        int n = 97;
+	int i;
 
-        while (n <= 122)
-        {
-                if (n == 101 || n == 113)
-               {
-                        n++;
-                        continue;
-                }
-                putchar(n);
-                n++;
-        }
-        putchar('\n');
-        return (0);
+	for (i = 97; i < 123; i++)
+	{
+		if (i != 101 && i != 113)
+		{
+			putchar(i);
+		}
+	}
+	putchar('\n');
+	return (0);
 }
 
