@@ -1,8 +1,9 @@
 #include "main.h"
 #include <stdio.h>
+
 /**
- * main - prints a fizz buzz program
- * return: always 0 (success)
+ * main - prints a Fizz Buzz program
+ * Return: always 0 (success)
  */
 int main(void)
 {
