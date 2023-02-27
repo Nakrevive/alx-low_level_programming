@@ -13,7 +13,7 @@ int main(void)
 
 	sum = 0;
 	srand(time(NULL));
-	for (i = 0 ; mi < 1000 ; i++)
+	for (i = 0 ; i < 1000 ; i++)
 	{
 		pass[i] = rand() % 78;
 		sum += (pass[i] + '0');
