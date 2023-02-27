@@ -1,6 +1,7 @@
 #include "main.h"
 /**
  *  main - function that convert a string to an integer
+ *  The number in the string can best
  *  Return: the int converted from the string
  */
 int _atoi(char *s)
