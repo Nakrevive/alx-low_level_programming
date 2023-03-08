@@ -1,8 +1,8 @@
-#include <unistd.>
+#include <unistd.h>
 /**
  * this is the _putchar.c
  */
 int _putchar(char c)
 {
-	return write(stdout_fileno, &c, 1)
+	return(stdout_fileno, &c, 1);
 }
