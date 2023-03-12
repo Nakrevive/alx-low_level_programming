@@ -1,106 +1,61 @@
+
+#include <stdio.h>
 #include "main.h"
-
-int _atoi(char *s);
-int multiply_two_nums(int num1, int num2);
-void print_number(int n);
-
 /**
-* main - Entry point
-*
-* @argc: Length of @argv
-*
-* @argv: Array of strings of the arguments of this program
-*
-* Return: 0, Success
-*/
-
-int main(int argc, char *argv[])
-{
-	if (argc == 3)
-	{
-		print_number(multiply_two_nums(_atoi(argv[1]), _atoi(argv[2])));
-		_putchar('\n');
-		return (0);
-	}
-	else
-	{
-		_putchar('E');
-		_putchar('r');
-		_putchar('r');
-		_putchar('o');
-		_putchar('r');
-		_putchar('\n');
-		return (0);
-	}
-}
-
-/**
-* _atoi - Convert a number in a string to an integer
-*
-* @s: String to be converted
-*
-* Return: Integer converted OR (0) if none
-*/
-
+ * _atoi - converts a string to an integer
+ * @s: string to be converted
+ * Return: the int converted from the string
+ */
 int _atoi(char *s)
 {
-	int sign_cache = 1;
-	int result = 0;
-
-	while (s[0] != '\0')
+	int i, d, n, len, f, digit;
+	i = 0;
+	d = 0;
+	n = 0;
+	len = 0;
+	f = 0;
+	digit = 0;
+	while (s[len] != '\0')
+		len++;
+	while (i < len && f == 0)
 	{
-		if (s[0] == '-')
-			sign_cache *= -1;
-		else if (s[0] >= '0' && s[0] <= '9')
-			result = (result * 10) + (s[0] - '0');
-		else if (result)
-			break;
-
-		s++;
+		if (s[i] == '-')
+			++d;
+		if (s[i] >= '0' && s[i] <= '9')
+				{
+			digit = s[i] - '0';
+			if (d % 2)
+				digit = -digit;
+			n = n * 10 + digit;
+			f = 1;
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				break;
+			f = 0;
+		}
+		i++;
 	}
-
-	return (result * sign_cache);
+	if (f == 0)
+		return (0);
+	return (n);
 }
-
 /**
-* multiply_two_nums - Multiplies two numbers
-*
-* @num1: A number
-*
-* @num2: A number
-*
-* Return: Result of num1 * num2
-*/
-
-int multiply_two_nums(int num1, int num2)
+ * main - multiplies two numbers
+ * @argc: number of arguments
+ * @argv: array of arguments
+ * Return: 0 (Success), 1 (Error)
+ */
+int main(int argc, char *argv[])
 {
-	return (num1 * num2);
-}
+	int result, num1, num2;
 
-/**
-* print_number - Prints numbers chars
-*
-* @n: Integers params
-*
-* Return: 0
-*/
-
-void print_number(int n)
-{
-	unsigned int n1;
-
-	n1 = n;
-
-	if (n < 0)
+	if (argc < 3 || argc > 3)
 	{
-		_putchar('-');
-		n1 = -n;
+		printf("Error\n");
+		return (1);
 	}
-
-	if (n1 / 10 != 0)
-	{
-		print_number(n1 / 10);
-	}
-
-	_putchar((n1 % 10) + '0');
+	num1 = _atoi(argv[1]);
+	num2 = _atoi(argv[2]);
+	result = num1 * num2;
+	printf("%d\n", result);
+	return (0);
 }
